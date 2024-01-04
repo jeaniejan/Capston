@@ -18,6 +18,9 @@ import json
 import requests
 
 def compute_result(prob, label):
+    """
+    TP(True Positive)
+    """
     TP, FP, FN, TN = 0, 0, 0, 0
     Total = 0
     for p, l in zip(prob, label):
