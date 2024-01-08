@@ -18,6 +18,7 @@ import json
 import requests
 
 def compute_result(prob, label):
+    # 결과를 통해 모델의 성능을 판단하는 함수
     TP, FP, FN, TN = 0, 0, 0, 0
     Total = 0
     for p, l in zip(prob, label):
@@ -34,42 +35,43 @@ def compute_result(prob, label):
     log = 'TP : {}, FN : {}, FP : {}, TN : {} \n'.format(TP, FN, FP, TN)
     
     try:
-        Acc = round((TP+TN)/Total*100,2)
+        Acc = round((TP+TN)/Total*100,2) 
     except ZeroDivisionError as identifier:
         Acc = -1
     try:
-        Pre = round(TP/(TP+FP)*100,2)
+        Pre = round(TP/(TP+FP)*100,2) 
     except ZeroDivisionError as identifier:
         Pre = -1
     try:
-        Recall = round(TP/(TP+FN)*100,2)
+        Recall = round(TP/(TP+FN)*100,2) 
     except ZeroDivisionError as identifier:
         Recall = -1
     try:
-        Spec = round(TN /(TN+FP)*100,2)
+        Spec = round(TN /(TN+FP)*100,2) 
     except ZeroDivisionError as identifier:
         Spec = -1
     try:
-        F1 = round(2*Pre*Recall/(Pre+Recall),2)
+        F1 = round(2*Pre*Recall/(Pre+Recall),2) 
     except ZeroDivisionError as identifier:
         F1 = -1
-
-
+    # 모델 성능 평가 지표를 반환
     return Acc, Pre, Recall, F1, Spec, log
 
 def save_model(model, optimizer, scheduler, epoch, time, memo, fold, f2, std, slack_flag) : 
+    # PyTorch 모델의 체크포인트를 저장하고 Web에(여기서는 slack) 모델 훈련 log를 보내는 함수
     model_cpu = model.to('cpu')
     state = {
-        'model' : model_cpu.state_dict(),
-        'optimizer' : optimizer.state_dict(),
-        'scheduler' : scheduler.state_dict()
+        'model': model_cpu.state_dict(),
+        'optimizer': optimizer.state_dict(),
+        'scheduler': scheduler.state_dict()
     }
-    if not(os.path.isdir('./saved_model')) : os.mkdir('./saved_model')
+    if not(os.path.isdir('./saved_model')): os.mkdir('./saved_model')
     if not(os.path.isdir('./saved_model/'+time+'_fold'+str(fold)+'_'+memo)) : os.mkdir('./saved_model/'+time+'_fold'+str(fold)+'_'+memo)
 
+    # 모델 체크포인트를 저장
     try:
         if not(os.path.isdir('./saved_model')) : os.mkdir('./saved_model')
-        if not(os.path.isdir('./saved_model/'+time+'_fold'+str(fold)+'_'+memo)) : os.mkdir('./saved_model/'+time+'_fold'+str(fold)+'_'+memo)
+        if not(os.path.isdir('./saved_model/'+time+'_fold'+str(fold)+'_'+memo)): os.mkdir('./saved_model/'+time+'_fold'+str(fold)+'_'+memo)
         torch.save(state, './saved_model/'+time+'_fold'+str(fold)+'_'+memo+'/'+str(epoch)+'_'+std+'.pth')
         text = 'Model_'+std+' save is sucessed\n'
         print(text)
@@ -81,15 +83,15 @@ def save_model(model, optimizer, scheduler, epoch, time, memo, fold, f2, std, sl
         if slack_flag : send_task_stat(memo, text, '', '', '')
         pass
 
-#나중에 이 쪽 수정해야함 (url 비공개)
+# 작업 과정을 기록하기 위한 slack 주소 (slack의 webhook service 활용)
 web_hook_url = 'https://hooks.slack.com/services/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'
+
 def send_msg(msg):
     data = {'text': msg}
     response = requests.post(
         web_hook_url, data=json.dumps(data), headers={'Content-Type': 'application/json'}
     )
     return response
-
 
 def send_task_stat(memo, log1, log2, log3, log4):
     msg = f'{memo}\n{log1} \n {log2} \n {log3} \n {log4}'
@@ -293,7 +295,6 @@ def train_val(path_dataset, args):
     #End Train
     ######################################
             
-# def val(model, )
 def test(path_dataset_list, args):
     batch_size = args.batch
     label_mode = args.label
@@ -402,7 +403,6 @@ def test(path_dataset_list, args):
 
             
         loss_e = loss_e/count
-
 
 def str2bool(v):
     if v.lower() in ('yes', 'true', 't', 'y', '1'):
