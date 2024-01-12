@@ -6,13 +6,16 @@ from multiprocessing import Pool, cpu_count, Lock, Manager
 from functools import partial
 import json
 import csv
-def preprocessing_data(seq_len, path_ori,  path_after, path_year, item_y, path_pati, result_list, log_list, item_p) :
 
+
+
+def preprocessing_data(seq_len, path_ori,  path_after, path_year, item_y, path_pati, result_list, log_list, item_p) :
+    #necessary directory가 없는 경우 만든다
     path_pati2 = os.path.join(path_year,item_p)
     if not(os.path.isdir(path_pati2)) : os.mkdir(path_pati2)
 
     path_data = os.path.join(path_pati,item_p, item_p+'_standard')
-    # try:
+    try:
     lst_data = os.listdir(path_data)
     lst_data = sorted(lst_data)
     result_list.append(path_data)
