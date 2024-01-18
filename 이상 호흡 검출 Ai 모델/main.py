@@ -19,6 +19,7 @@ import requests
 
 def compute_result(prob, label):
     # 결과를 통해 모델의 성능을 판단하는 함수
+    # 각 사례의 예측값/실제값를 비교(T/F P/N)
     TP, FP, FN, TN = 0, 0, 0, 0
     Total = 0
     for p, l in zip(prob, label):
@@ -58,7 +59,7 @@ def compute_result(prob, label):
     return Acc, Pre, Recall, F1, Spec, log
 
 def save_model(model, optimizer, scheduler, epoch, time, memo, fold, f2, std, slack_flag) : 
-    # PyTorch 모델의 체크포인트를 저장하고 Web에(여기서는 slack) 모델 훈련 log를 보내는 함수
+    # PyTorch 모델의 체크포인트를 저장하고 Web(여기서는 slack)에 모델 훈련 log를 보내는 함수
     model_cpu = model.to('cpu')
     state = {
         'model': model_cpu.state_dict(),
