@@ -4,6 +4,7 @@ import random
 import csv
 path_image = './SNU'
 path_json = './Json/Annotation.json'
+
 def split_dataset(path1='./SNU', path2='./Json/Annotation-ver2.json', ratio = [0.00,0.00,1.0]):
     f_summary = open(path1+'/Dataset_summary.csv', 'w', encoding='utf-8-sig', newline='')
     wr_summary = csv.writer(f_summary)
