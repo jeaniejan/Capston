@@ -20,7 +20,8 @@ const Loginstyles = StyleSheet.create({ //입력창 스타일
     input: {
       height: 50,
       width: '80%',
-      borderColor: 'gray',
+      borderColor: 'white',
+      backgroundColor:'white',
       borderWidth: 1,
       marginBottom: 30,
       paddingLeft: 8,
@@ -60,7 +61,7 @@ const Container=styled.View`
 
 //앱로그인 버튼     
 const ButtonContainer=styled.View`   
-
+    marginBottom:130;
     alignItems:flex-start; 
 
 `;
@@ -90,7 +91,7 @@ const LoginButton = () => {   //로그인 버튼
 
 
 
-const Signup=()=>{
+const Signup2=()=>{
     const [id,setId] = useState('');
     const [password, setPassword] = useState('');
   
@@ -158,4 +159,4 @@ const Signup=()=>{
     )
 }
 
-export default Signup;
+export default Signup2;
