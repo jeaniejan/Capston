@@ -13,7 +13,7 @@ const AuthStack=()=>{
     const theme=useContext(ThemeContext);
     return(
         <Stack.Navigator
-            initialRouteName="Recording"
+            initialRouteName="Signup2"
             screenOptions={{
                 headerTitleAlign:'center',
                 cardStyle:{backgroundColor:'#F1E7DF'},
@@ -22,9 +22,8 @@ const AuthStack=()=>{
             }}
         >
 
-          <Stack.Screen name="Recording" component={Recording}/>
-          <Stack.Screen name="Signup1" component={Signup1}/>
           <Stack.Screen name="Signup2" component={Signup2}/>
+          <Stack.Screen name="Signup1" component={Signup1}/>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Loading" component={Loading}/>
 
