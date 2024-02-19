@@ -1,3 +1,12 @@
 from django.shortcuts import render
+from rest_framework import viewsets
+from .models import UserInfo
+from .serializers import UserInfoSerializer
 
-# Create your views here.
+
+class UserInfoView(viewsets.ModelViewSet):
+     queryset = UserInfo.objects.all()
+     serializer_class = UserInfoSerializer
+
+
+    
