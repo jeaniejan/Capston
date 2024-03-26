@@ -6,6 +6,8 @@ import Login from "../screens/Login";
 import Signup1 from "../screens/Signup1";
 import Signup2 from "../screens/Signup2";
 import Recording from "../screens/Recording";
+import ECG from "../screens/ECG";
+import Profile from "../screens/Profile";
 
 const Stack=createStackNavigator();
 
@@ -13,7 +15,7 @@ const AuthStack=()=>{
     const theme=useContext(ThemeContext);
     return(
         <Stack.Navigator
-            initialRouteName="Signup2"
+            initialRouteName="ECG"
             screenOptions={{
                 headerTitleAlign:'center',
                 cardStyle:{backgroundColor:'#F1E7DF'},
@@ -21,11 +23,13 @@ const AuthStack=()=>{
                 gestureEnabled: true
             }}
         >
-
-          <Stack.Screen name="Signup2" component={Signup2}/>
-          <Stack.Screen name="Signup1" component={Signup1}/>
+          <Stack.Screen name="ECG" component={ECG}/>
           <Stack.Screen name="Login" component={Login}/>
+          <Stack.Screen name="Signup1" component={Signup2}/>
+          <Stack.Screen name="Recording" component={Recording}/>
+          <Stack.Screen name="Profile" component={Profile}/>
           <Stack.Screen name="Loading" component={Loading}/>
+
 
         </Stack.Navigator>
     );

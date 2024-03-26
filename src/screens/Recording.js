@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button,Image} from 'react-native';
 import { Audio } from 'expo-av';
 import { StatusBar } from 'react-native-web';
 
@@ -71,23 +71,40 @@ const Recording=()=>{
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>수면호흡음</Text>
       <Text>{message}</Text>
+      <Image
+                    style={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: 100,
+                    margin:20,
+                    }}
+                    source={require("../../assets/mic.png")}/>
       <Button
-        title={recording ? 'Stop Recording' : 'Start Recording'}
+        title={recording ? 'Stop' : 'Start'}
         onPress={recording ? stopRecording : startRecording}/>
+
       {getRecordingLines()}
       <StatusBar style="auto"/>
+      <Text>휴대폰을 머리맡에 위치시켜주세요.</Text>
+      <Text>주변 소음이 적을수록 측정의 정확도는 높아집니다.</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({ 
     container:{
-        flex:1,
-        backgroundColor:'#fff',
+        flex:0.7,
+        backgroundColor:'#F1E7DF',
         alignItems:'center',
         justifyContent:'center',
     },
+    title:{
+      flex:0.3,
+      alignItems:"flex-start",
+      justifyContent:'flex-start',
+  },
     row:{
         flexDirection:'row',
         alignItems:'center',
