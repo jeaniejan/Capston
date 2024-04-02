@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "rest_framework",
     # app
     "accounts",
+    'sleepsound',
     # lib
     'rest_framework.authtoken',
     'dj_rest_auth',
@@ -51,6 +52,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
     'dj_rest_auth.registration',
     'rest_framework_simplejwt',
 ]

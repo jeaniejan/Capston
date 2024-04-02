@@ -20,5 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/accounts/v1/', include('accounts.urls')),
+    path('medcolearn/accounts/v1/', include('accounts.urls')),
+    path('medcolearn/accounts/v2/', include('allauth.urls')),
+    path('mdecolearn/sleepsound', include('sleepsound/url'))
 ]
