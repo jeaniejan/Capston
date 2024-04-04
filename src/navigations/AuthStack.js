@@ -10,6 +10,7 @@ import ECG from "../screens/ECG";
 import Profile from "../screens/Profile";
 import Tracking from "../screens/Tracking";
 import Tracking2 from "../screens/Tracking2";
+import SleepSound from "../screens/SleepSound"
 
 const Stack=createStackNavigator();
 
@@ -17,7 +18,7 @@ const AuthStack=()=>{
     const theme=useContext(ThemeContext);
     return(
         <Stack.Navigator
-            initialRouteName="Tracking2"
+            initialRouteName="SleepSound"
             screenOptions={{
                 headerTitleAlign:'center',
                 cardStyle:{backgroundColor:'#F1E7DF'},
@@ -25,8 +26,11 @@ const AuthStack=()=>{
                 gestureEnabled: true
             }}
         >
-          <Stack.Screen name="Tracking2" component={Tracking2}/>
+           <Stack.Screen name="SleepSound" component={SleepSound}/>       
           <Stack.Screen name="Tracking" component={Tracking}/>
+          <Stack.Screen name="Tracking2" component={Tracking2}/>
+
+
           <Stack.Screen name="ECG" component={ECG}/>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Signup1" component={Signup2}/>
