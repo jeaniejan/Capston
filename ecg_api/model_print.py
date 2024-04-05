@@ -11,7 +11,7 @@ model = ResNetAndrewNg(config)
 model = torch.load('checkpoint_hr_sleep.pth', map_location=torch.device('cpu'))
 
 model_str = str(model)
-with open('model_output.txt', 'w') as f:
+with open('model/model_output.txt', 'w') as f:
     f.write(model_str)
 # print(model)
 print("done")

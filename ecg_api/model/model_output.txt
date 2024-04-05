@@ -44,12 +44,17 @@
   (fc): LinearProjection(
     (linear): Linear(in_features=8, out_features=2, bias=True)
   )
-), 'dataloader': {'train': <torch.utils.data.dataloader.DataLoader object at 0x000001E7FDAA5FD0>, 'valid': <torch.utils.data.dataloader.DataLoader object at 0x000001E7FDABA0D0>, 'test': <torch.utils.data.dataloader.DataLoader object at 0x000001E7FDABA550>}, 'loss_function': CrossEntropyLoss(), 'optimizer': Adam (
+), 'dataloader': {'train': <torch.utils.data.dataloader.DataLoader object at 0x000001EF7C89F610>, 'valid': <torch.utils.data.dataloader.DataLoader object at 0x000001EF7E6644D0>, 'test': <torch.utils.data.dataloader.DataLoader object at 0x000001EF7E664D50>}, 'loss_function': CrossEntropyLoss(), 'optimizer': Adam (
 Parameter Group 0
     amsgrad: False
     betas: (0.9, 0.999)
+    capturable: False
+    differentiable: False
     eps: 1e-08
+    foreach: None
+    fused: None
     lr: 0.0001
+    maximize: False
     weight_decay: 1e-05
 ), 'epochs': 50, 'save_path': '/home/jangood1122/workspace/collaboration/datadam2022-sleep/result/1215_1_300_300_3/'}, 'weight': OrderedDict([('encoder.0.conv1.weight', tensor([[[-0.4577, -0.0507,  0.4340]],
 
