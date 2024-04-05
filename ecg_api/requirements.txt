@@ -1,0 +1,13 @@
+numpy==1.22.3
+torch==1.10.2  
+scikit-learn==1.1.1
+pyedflib==0.1.30
+pandas==1.4.2
+pyedflib==0.1.30
+fastapi[all]==0.88.0
+mne==1.2.1 
+biosppy==1.0.0
+torchsampler==0.1.2 
+torchvision 
+torchaudio 
+--extra-index-url https://download.pytorch.org/whl/cu113
