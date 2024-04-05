@@ -1,3 +1,4 @@
+/*
 import React, { useEffect, useState } from 'react';
 import { View, Button, Text } from 'react-native';
 import { Audio } from 'expo-av'; // Expo의 Audio API 사용
@@ -34,3 +35,4 @@ const SleepSound = () => {
 };
 
 export default SleepSound;
+*/
