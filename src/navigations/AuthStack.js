@@ -18,7 +18,7 @@ const AuthStack=()=>{
     const theme=useContext(ThemeContext);
     return(
         <Stack.Navigator
-            initialRouteName="Tracking"
+            initialRouteName="Login"
             screenOptions={{
                 headerTitleAlign:'center',
                 cardStyle:{backgroundColor:'#F1E7DF'},
@@ -28,10 +28,7 @@ const AuthStack=()=>{
         >
            <Stack.Screen name="Tracking" component={Tracking}/>
            <Stack.Screen name="SleepSound" component={SleepSound}/>       
-
           <Stack.Screen name="Tracking2" component={Tracking2}/>
-
-
           <Stack.Screen name="ECG" component={ECG}/>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Signup1" component={Signup2}/>
