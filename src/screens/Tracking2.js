@@ -234,6 +234,5 @@ const styles = StyleSheet.create({
 
 });
 
-  // 기존 스타일에 title, subtitle, learnMore 스타일 추가할 것
 
 export default Tracking2;
