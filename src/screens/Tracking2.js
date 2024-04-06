@@ -236,4 +236,4 @@ const styles = StyleSheet.create({
 
 
 export default Tracking2;
-//여기 깃헙에 안올라가왜ㅜ
+//여기 깃헙에 안올라가왜
