@@ -1,3 +1,18 @@
+import React from 'react';
+import { View, Text } from 'react-native';
+
+const SleepSound = () => {
+  return (
+    <View>
+      <Text>ECG Screen</Text>
+    </View>
+  );
+};
+
+export default SleepSound; 
+
+
+
 /*
 import React, { useEffect, useState } from 'react';
 import { View, Button, Text } from 'react-native';

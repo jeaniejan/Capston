@@ -18,7 +18,7 @@ const AuthStack=()=>{
     const theme=useContext(ThemeContext);
     return(
         <Stack.Navigator
-            initialRouteName="SleepSound"
+            initialRouteName="Tracking"
             screenOptions={{
                 headerTitleAlign:'center',
                 cardStyle:{backgroundColor:'#F1E7DF'},
@@ -26,8 +26,9 @@ const AuthStack=()=>{
                 gestureEnabled: true
             }}
         >
+           <Stack.Screen name="Tracking" component={Tracking}/>
            <Stack.Screen name="SleepSound" component={SleepSound}/>       
-          <Stack.Screen name="Tracking" component={Tracking}/>
+
           <Stack.Screen name="Tracking2" component={Tracking2}/>
 
 
