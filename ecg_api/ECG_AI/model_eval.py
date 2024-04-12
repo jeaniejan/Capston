@@ -1,13 +1,13 @@
 import torch
 import numpy as np
-from ECG_AI.ResNetAndrewNg import ResNetAndrewNg
+from ResNetAndrewNg import ResNetAndrewNg
 import pandas as pd
 import wfdb
 from biosppy.signals import ecg
 from datetime import datetime
 # 필요한 함수 정의
 
-def find_percentile(score):
+def find_percentile(score, df):
     per_commnet = '백분위수 계산 중 . . .'
     print(per_commnet)
     rounded_score = round(score, 2)
@@ -33,8 +33,8 @@ def adjust_len(arr, desire_len=256):
     return arr
 
 def get_rpeaks_from_dat(record_name):
-    rpeack_comment = 'ECG Rpeaks 추출 . . .'
-    print(rpeack_comment)
+    rpeak_comment = 'ECG Rpeaks 추출 . . .'
+    print(rpeak_comment)
     record = wfdb.rdrecord(record_name)
     raw_data = record.p_signal[:, 0]
     Hz = record.fs
@@ -53,14 +53,15 @@ def get_hr_from_rpeaks(rpeak_arr, hz, window, step):
     return hr_sec_list
 
 # 새로운 데이터에 대한 예측 확률을 반환하는 함수
-def predict_new_data(record_name):
-    checkpoint = torch.load('model/checkpoint_hr_sleep.pth', map_location=torch.device('cpu'))
+def predict_new_data(record_name, df):
+    # 모델 로드
     load_comment = '모델 로드 중 . . .'
+    print(load_comment)
+    checkpoint = torch.load('model/checkpoint_hr_sleep.pth', map_location=torch.device('cpu'))
     config = checkpoint['config']
     weight = checkpoint['weight']
     model = ResNetAndrewNg(config)
     model.load_state_dict(weight)
-    print(load_comment)
     model.eval()
 
     # .dat 파일 로드 및 전처리
@@ -77,7 +78,10 @@ def predict_new_data(record_name):
     hr_tensor = hr_tensor.unsqueeze(0).unsqueeze(0)
     prob = model_inference(model, hr_tensor)
 
-    return prob
+    # 백분위
+    percentile = find_percentile(prob, df)
+
+    return prob, percentile
 
 if __name__ == "__main__":
     # test_data 
@@ -86,7 +90,7 @@ if __name__ == "__main__":
     start_comment = '수면 무호흡증 진단을 시작합니다 . . .'
     print(start_comment)
     start = datetime.now()
-    prob = predict_new_data(record_name)
+    prob, percentile = predict_new_data(record_name, df)
     print(f"Predicted probability: {prob}")
-    print(f"Percentile(high): {find_percentile(prob)}")
+    print(f"Percentile(high): {percentile}")
     print('Elapsed time:', datetime.now() - start)
