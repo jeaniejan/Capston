@@ -2,7 +2,7 @@ import torch
 import pandas as pd
 import numpy as np
 import os
-from ResNetAndrewNg import ResNetAndrewNg
+from ECG_AI.ResNetAndrewNg import ResNetAndrewNg
 from datetime import datetime
 from DataDamSolver import get_performance
 from run_hr import get_hr_from_rpeaks

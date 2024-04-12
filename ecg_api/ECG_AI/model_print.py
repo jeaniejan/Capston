@@ -1,5 +1,5 @@
 from torch import torch
-from ResNetAndrewNg import ResNetAndrewNg
+from ECG_AI.ResNetAndrewNg import ResNetAndrewNg
 
 config = {
     "kernel_size": 7,  # 예시 값

@@ -1,6 +1,6 @@
 import torch
 import numpy as np
-from ResNetAndrewNg import ResNetAndrewNg
+from ECG_AI.ResNetAndrewNg import ResNetAndrewNg
 import pandas as pd
 import wfdb
 from biosppy.signals import ecg
@@ -81,7 +81,6 @@ def predict_new_data(record_name):
 
 if __name__ == "__main__":
     # test_data 
-    # a01_data/a01으로 수정 
     df = pd.read_csv('data/percentile_dummy.csv')
     record_name = 'data/apnea-ecg-database-1.0.0/a01' 
     start_comment = '수면 무호흡증 진단을 시작합니다 . . .'

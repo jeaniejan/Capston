@@ -3,14 +3,14 @@ import sys
 print(os.path.abspath('.'),"########")
 
 try:
-    from DataDamloader2_hr import *
+    from ECG_AI.DataDamloader2_hr import *
     from codes.DataDamSolver import *
-    from ResNetAndrewNg import *
+    from ECG_AI.ResNetAndrewNg import *
 except ModuleNotFoundError:
     sys.path.append('./model/code')
-    from DataDamloader2_hr import *
+    from ECG_AI.DataDamloader2_hr import *
     from codes.DataDamSolver import *
-    from ResNetAndrewNg import *
+    from ECG_AI.ResNetAndrewNg import *
 
 import pandas as pd
 from torch.utils.data import DataLoader
