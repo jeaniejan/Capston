@@ -5,7 +5,7 @@
 2. 가상환경 실행
 3. 작업 디렉토리를 ECG_AI(app.py가 있는 폴더)로 이동
 4. 터미널에서 python app.py
-   - [localhost](http://localhost:5000/upload) 엔드포인트
+   - 엔드포인트(로컬): http://localhost:5000/upload 
    - 파일 업로드(ZIP 형식) - **data 폴더의 a01.zip**
    - 업로드하면 API에서 압축 해제 uploads 폴더에 파일 저장
    - upload 폴더의 파일을 통해 AI  추론
