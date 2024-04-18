@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const SleepSound = () => {
   return (
     <View>
-      <Text>ECG Screen</Text>
+      <Text>SleepSound Screen</Text>
     </View>
   );
 };

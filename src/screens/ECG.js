@@ -1,7 +1,24 @@
+import React from 'react';
+import { View, Text } from 'react-native';
+
+const ECG = () => {
+  return (
+    <View>
+      <Text>ECG Screen</Text>
+    </View>
+  );
+};
+
+export default ECG; 
+
+
+
+
+/*
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-import axios from 'axios';//http요청을 만들기위해 필요함
+import axios from 'axios'; // http요청을 만들기위해 필요함
 
 const ECG = () => {
   // 선택된 파일을 저장하기 위한 상태(state)
@@ -65,10 +82,11 @@ const ECG = () => {
       <Text>ECG 화면</Text>
       <Button title="ECG CSV 파일 선택" onPress={selectFile} />
       {file && <Text>선택된 파일: {file.name}</Text>} // 선택된 파일 이름을 표시
-      {/* 파일 업로드를 트리거하는 버튼 */}
+
       <Button title="파일 업로드" onPress={uploadFile} disabled={!file} />
     </View>
   );
 };
 
 export default ECG;
+*/
