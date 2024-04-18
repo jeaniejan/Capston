@@ -93,6 +93,8 @@ const AuthStack = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup1" component={Signup1} />
       <Stack.Screen name="Loading" component={Loading} />
+      <Stack.Screen name="EcgCheck" component={EcgCheck} />
+        <Stack.Screen name="Recording" component={Recording} />
     </Stack.Navigator>
   );
 };

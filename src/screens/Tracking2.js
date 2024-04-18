@@ -1,3 +1,5 @@
+
+
 import React, { useState } from 'react';
 import { View, Text, Switch, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Card } from 'react-native-paper';
@@ -66,8 +68,6 @@ const Tracking2 = () => {
 </Card>
 
 
-  
-      {/* 요일별 스케쥴 뷰 */}
       <Text style={styles.scheduleHeader}>Your Schedule</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.daysOfWeekContainer}>
         {daysOfWeek.map((day) => (
@@ -236,4 +236,3 @@ const styles = StyleSheet.create({
 
 
 export default Tracking2;
-//여기 깃헙에 안올라가왜

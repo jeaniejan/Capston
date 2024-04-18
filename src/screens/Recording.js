@@ -1,12 +1,19 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button,Image} from 'react-native';
+import { Text, View, StyleSheet, Button,Image,TouchableOpacity} from 'react-native';
 import { Audio } from 'expo-av';
 import { StatusBar } from 'react-native-web';
+import { useNavigation } from '@react-navigation/native';
 
 const Recording=()=>{
   const [recording, setRecording] = React.useState();
   const [recordings, setRecordings]= React.useState([]);
   const [message , setMessage] =React.useState("");
+
+  const navigation = useNavigation();
+
+  const navigateToEcgCheck = () => {
+    navigation.navigate('EcgCheck');
+  };
 
   //녹음 시작
   async function startRecording() {
@@ -73,6 +80,15 @@ const Recording=()=>{
     <View style={styles.container}>
       <Text style={styles.title}>수면호흡음</Text>
       <Text>{message}</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.goBack()}> 
+        <Text>돌아가기</Text>
+      </TouchableOpacity>
+
+
+
       <Image
                     style={{
                     width: 60,

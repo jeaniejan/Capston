@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { View, Text, Switch, TextInput, Button,StyleSheet ,Image} from 'react-native';
 import { Card } from 'react-native-paper'; // UI 요소를 위한 라이브러리
@@ -18,7 +19,6 @@ const Tracking = () => {
 
 
   <Card style={styles.card}>
-    {/* 이미지 삽입 */}
     <Card.Cover  source={require("../../assets/Sleepgraph.png")}/>
     <Card.Title title="주간 수면시간" subtitle="평균 수면시간: 7h 10m" />
   </Card>

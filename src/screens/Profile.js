@@ -1,7 +1,11 @@
 import React,{useState} from "react";
 import styled from 'styled-components/native';
-import {Text,Button,Image,StyleSheet,TouchableOpacity,TextInput} from 'react-native';
-import { View } from "react-native-web";
+import {Text,Button,Image,StyleSheet,TouchableOpacity,TextInput,View} from 'react-native';
+import { Picker } from "react-native-web";
+import DropDownPicker from 'react-native-dropdown-picker';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import RNPickerSelect from 'react-native-picker-select';
+
 //import auth from '@react-native-firebase/auth';
 
 const Loginstyles = StyleSheet.create({ //입력창 스타일
@@ -9,8 +13,15 @@ const Loginstyles = StyleSheet.create({ //입력창 스타일
       justifyContent: 'center',
       alignItems: 'center',
       padding: 16,
-        
+      marginBottom: 30,
+      borderRadius:20,
+      borderColor: 'white',
+      width: '80%', // 전체 너비의 80%로 설정
+      marginLeft: '10%', // 나머지 10%를 왼쪽으로 마진
+      marginRight: '10%',// 나머지 10%를 오른쪽으로 마진
+
     },
+
     title: {
       fontSize: 20,
       marginBottom: 16,
@@ -18,16 +29,19 @@ const Loginstyles = StyleSheet.create({ //입력창 스타일
       
     },
     input: {
+
       height: 50,
       width: '80%',
       borderColor: 'white',
       backgroundColor:'white',
-      borderWidth: 1,
       marginBottom: 30,
       paddingLeft: 8,
-      fontColor:'black',
+      fontColor:'gray',
       borderRadius:20,
+
     },
+
+
   });
 
 
@@ -48,7 +62,32 @@ const styles=StyleSheet.create({
         justifyContent:"flex-start",
         alignItems:"center"
     },
- 
+    dropdownLabel: {
+        color: 'gray', // 폰트 색상을 회색으로 변경
+      },
+
+    datePicker: {
+        width: 200,
+        marginBottom: 10,
+      },
+      datePickerContainer: {
+        backgroundColor: 'white', // 흰색 배경 추가
+        borderRadius: 5, // 원하는 값으로 조절
+        overflow: 'hidden',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 16,
+        marginBottom: 30,
+        borderRadius:20,
+        borderColor: 'white',
+        width: '80%', // 전체 너비의 80%로 설정
+        marginLeft: '10%', // 나머지 10%를 왼쪽으로 마진
+        marginRight: '10%',// 나머지 10%를 오른쪽으로 마진
+      },
+      selectText: {
+        color: 'gray', 
+      }
+
 })
 
 const Container=styled.View`
@@ -59,7 +98,7 @@ const Container=styled.View`
 
 `;
 
-//앱로그인 버튼     
+  
 const ButtonContainer=styled.View`   
     marginBottom:130;
     alignItems:flex-start; 
@@ -68,14 +107,15 @@ const ButtonContainer=styled.View`
 
 
 
-const LoginButton = () => {   //로그인 버튼
+
+const LoginButton = () => {   //프로필 수정 완료 버튼
 
     return (
         <TouchableOpacity
             style={{ 
             backgroundColor: '#D5B5A3',
             padding: 16,
-            marginBottom: 50,
+            marginBottom: 10,
             borderRadius: 50,
             width:200,
             alignItems: 'center',
@@ -83,7 +123,7 @@ const LoginButton = () => {   //로그인 버튼
             }}
           
         >
-            <Text style={{color:'#000000',fontSize: 15} }>다음 장 넘어가기</Text>
+            <Text style={{color:'#000000',fontSize: 15} }>프로필 수정 완료</Text>
         </TouchableOpacity>
     );
 };
@@ -94,7 +134,40 @@ const LoginButton = () => {   //로그인 버튼
 const Profile=()=>{
     const [id,setId] = useState('');
     const [password, setPassword] = useState('');
+
+    const [open, setOpen] = useState("false");
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+      {label: '남자', value: '남자'},
+      {label: '여자', value: '여자'}
+    ]);
+
+    const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(null);
+
+    const showDatePicker = () => {
+        setDatePickerVisibility(true);
+    };
+
+    const hideDatePicker = () => {
+        setDatePickerVisibility(false);
+    };
+
+    const handleConfirm = (date) => {
+    setSelectedDate(date);
+    hideDatePicker();
+  };
+
+
+  const [selectedWeight, setSelectedWeight] = useState(null);
+
+  const weightOptions = [];
+  for (let i = 30; i <= 200; i++) {
+    weightOptions.push({ label: `${i} kg`, value: i });
+  }
+
   
+
     const handleLogin = async () => {
       try {
         // Firebase에 이메일과 비밀번호로 로그인 요청을 보냄
@@ -106,45 +179,70 @@ const Profile=()=>{
         console.error('로그인 실패:', error.message);
       }
     };
-  
+
 
 
     return(
         <Container>
             <ButtonContainer>
-                <Text style={styles.titleText}>회원가입(1/2)</Text>
+                <Text style={styles.titleText}>프로필 수정</Text>
             </ButtonContainer>
 
-            <Text style={styles.mainText}>사용하실 아이디와 비밀번호를 입력해주세요</Text>
+            <Text style={styles.mainText}>수면질 측정에 필요한 정보를 입력해주세요</Text>
+
+            <DropDownPicker
+        
+                style={Loginstyles.container} 
+                open={open}
+                value={value}
+                items={items}
+                setOpen={setOpen}
+                setValue={setValue}
+                setItems={setItems}
+                placeholder="성별"
+                labelStyle={styles.selectText}
+            />
+ 
+
+
+            <View style={styles.datePickerContainer}>
+                <TouchableOpacity style={{alignSelf:'flex-start' }} onPress={showDatePicker}>
+                <Text style={styles.selectText}>{selectedDate ? selectedDate.toISOString().split('T')[0] : '생년월일'}</Text>
+                </TouchableOpacity>
+      
+                <DateTimePickerModal
+                style={styles.datePicker}
+                isVisible={isDatePickerVisible}
+                mode="date"
+                onConfirm={handleConfirm}
+                onCancel={hideDatePicker}
+                labelStyle={styles.dropdownLabel} 
+                />
+            </View >
+
+
             <TextInput
                 style={Loginstyles.input}
                 value={id}
                 onChangeText={text=>setId(text)}
                 onSubmitEditing={()=>{}}
-                placeholder="아이디"
+                placeholder="몸무게(kg)"
                 returnKeyType="next"
-            />
+            />  
 
+
+
+
+ 
             <TextInput
                 style={Loginstyles.input}
-                label="Password"
-                //value={password}
+                value={password}
                 onChangeText={text=>setPassword(text)}
                 onSubmitEditing={()=>{}}
-                placeholder="비밀번호"
-                returnKeyType="done"
-                isPassword
-            />
-            <TextInput
-                style={Loginstyles.input}
-                label="Password"
-                //value={password}
-                onChangeText={text=>setPassword(text)}
-                onSubmitEditing={()=>{}}
-                placeholder="비밀번호 확인"
-                returnKeyType="done"
-                isPassword
-            />
+                placeholder="키(cm)"
+                returnKeyType="next"
+            />  
+
             <LoginButton style={styles.button} onPress={handleLogin}/>
 
 
