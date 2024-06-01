@@ -180,7 +180,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   measurementContainer: {
-    justifyContent: 'center',
+    justifyContent: 'center' ,
     alignItems: 'center',
   },
   pulse: {
