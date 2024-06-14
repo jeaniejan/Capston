@@ -1,6 +1,6 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, Animated } from 'react-native';
+import * as DocumentPicker from 'expo-document-picker';
 
 const EcgCheck = () => {
   const [measuring, setMeasuring] = useState(false);
@@ -36,8 +36,16 @@ const EcgCheck = () => {
     setMeasuring(false);
   };
 
-  const uploadFile = () => {
-    // Add functionality to upload file
+  const uploadFile = async () => {
+    try {
+      const res = await DocumentPicker.getDocumentAsync({});
+      if (res.type === 'success') {
+        console.log(res);
+        // Handle the selected file
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const scale = animation.interpolate({
@@ -189,6 +197,4 @@ const styles = StyleSheet.create({
 });
 
 export default EcgCheck;
-
-
 

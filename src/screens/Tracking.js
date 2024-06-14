@@ -8,14 +8,14 @@ const Tracking = () => {
               <Text style={styles.title}>수면 트래킹</Text>
               <Text style={styles.subtitle}>주간 수면 시간</Text>
 
-              <View>
+              <View style={styles.centeredImageContainer}>
                   <Image
                       style={styles.chartImage}
                       source={require("../../assets/Sleepgraph.png")} 
                   />
               </View>
               <Text style={styles.subtitle}>최근 30일 그래프</Text>
-              <View style={[styles.centeredImageContainer, { marginLeft: 90 }]}>
+              <View style={styles.rightAlignedImageContainer}>
                   <Image
                       style={styles.chartImage}
                       source={require("../../assets/Chart.png")} // Replace with your recent 30 days chart image path
@@ -45,7 +45,6 @@ const Tracking = () => {
   );
 };
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -71,28 +70,6 @@ const styles = StyleSheet.create({
         marginLeft: 40, 
         marginTop: 40,
     },
-    card: {
-        backgroundColor: '#50278f',
-        borderRadius: 10,
-        padding: 20,
-        marginBottom: 20,
-        alignItems: 'center',
-    },
-    cardTitle: {
-        color: 'white',
-        fontSize: 16,
-        marginBottom: 10,
-    },
-    cardValue: {
-        color: 'white',
-        fontSize: 24,
-        fontWeight: 'bold',
-    },
-    cardSubtitle: {
-        color: 'white',
-        fontSize: 14,
-        marginBottom: 10,
-    },
     chartImage: {
         width: '100%',
         height: 200,
@@ -100,6 +77,10 @@ const styles = StyleSheet.create({
     },
     centeredImageContainer: {
         alignItems: 'center',
+        marginBottom: 20,
+    },
+    rightAlignedImageContainer: {
+        alignItems: 'flex-end',
         marginBottom: 20,
     },
     averageSleepContainer: {
@@ -110,7 +91,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         width: '70%',
         height: 100,
-        marginLeft: 80,
+        alignSelf: 'center', // Center the container
     },
     averageSleepText: {
         color: 'black',
@@ -149,6 +130,3 @@ const styles = StyleSheet.create({
 });
 
 export default Tracking;
-
-
-
