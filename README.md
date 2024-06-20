@@ -18,3 +18,22 @@
 
 - 수면 데이터 누적 후 시각화 (접근권한 필요)
 
+#### - 실행 방법
+```python
+git clone https://github.com/jeaniejan/Capston.git
+cd Capston
+```
+Node.js 및 npm 설치
+```python
+npm install
+```
+```python
+npm start
+```
+```python
+npm run build
+```
+
+```python
+npm test
+```
