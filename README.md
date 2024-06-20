@@ -1,7 +1,7 @@
-# DreamGuard
-: 더 좋은 삶을 위한 잠 지키미
+# DreamGuard: 더 좋은 삶을 위한 잠 지킴이
 ### 자가 수면 검사 데이터를 기반으로, AI 수면 장애 위험도 진단 및 수면 트래킹 서비스를 제공하는 모바일 어플리케이션
-### APK를 통해 애플리케이션 설치
+### APK를 통해 어플리케이션 설치
+
 ### Feature
 #### - registration & login
 <img src="https://github.com/jeaniejan/Capston/assets/121528605/d46403e3-0e4b-4570-82e1-24db8d6fad0f.png" width="200" height="400"/>
