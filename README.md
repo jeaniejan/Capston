@@ -10,7 +10,7 @@
 - ![image](https://github.com/jeaniejan/Capston/assets/121528605/d46403e3-0e4b-4570-82e1-24db8d6fad0f)
 
 - DreamGuard_Ai/sampledate 내 데이터를 통해 수면장애 위험도 판단 가능
-![image](https://github.com/jeaniejan/Capston/assets/121528605/accf360b-4727-44ba-a218-2a827850dc00)
-![image](https://github.com/jeaniejan/Capston/assets/121528605/4860baab-4d99-42e3-af40-feae234fc6ae)
+![image](https://github.com/jeaniejan/Capston/assets/121528605/c7db719c-2606-48a5-a4e4-c62039a02012)
+<img src="https://github.com/jeaniejan/Capston/assets/121528605/bd949584-6bfb-464d-b1f3-11e295b7ebe4.png" width="200" height="400"/>
 
 - 심전도의 경우 스마트워치로 보낼 수 있는 심전도 파일 시간의 문제로, 파일업로드를 권장함 
